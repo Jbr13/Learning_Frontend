@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 2</title>
+
+</head>
+
+<body>
+
+    <button class="botao">Clique aqui</button>
+
+    <script>
+    
+    var elementButton = document.querySelector('.botao');
+    var elementBG;
+
+    elementButton.onclick = function createBG() {
+
+        var elementBG = document.createElement('div');
+
+        elementBG.className = 'divBox';
+        elementBG.style.width = '100%';
+        elementBG.style.height = '100px';
+        elementBG.style.backgroundColor = 'black';
+
+        document.querySelector('body').appendChild(elementBG);
+
+        elementBG.onmouseover = function getRandomColor() {
+                          
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+
+                for (var i = 0; i < 6; i++) {
+
+                color += letters[Math.floor(Math.random() * 16)];
+
+                }
+
+                return elementBG.style.backgroundColor = color;
+
+                }
+                
+                
+        }
+
+    </script>
+
+</body>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 1</title>
+
+</head>
+
+<body>
+
+    <script>
+    
+    function checaIdade (idade)  {
+        
+        return new Promise(function(resolve, reject){
+
+            if (idade >= 18) {
+                resolve()
+            } else {
+                reject()
+            }
+
+        })
+
+    }
+    
+    setTimeout(function(){ 
+        
+        checaIdade(10)
+        .then(function() {
+                console.log("Maior que 18");
+        })
+            .catch(function() {
+                console.log("Menor que 18");
+        });
+    
+    }, 3000);
+
+    
+
+    </script>
+
+</body>

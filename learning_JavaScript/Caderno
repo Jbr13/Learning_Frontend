@@ -1,0 +1,2319 @@
++------------------------------------------------------------------------------------------------------------+
+                                                  JavaScript       
++------------------------------------------------------------------------------------------------------------+
+
+-- JavaScript
+
+    A LINGUAGEM
+      Linguagem de programação interpretada.
+
+    APLICAÇÕES
+      Front end
+      Manipulação do DOM, comunicação assíncrona com o back end e mais
+      Back end
+      Comunicação com banco de dados, manipulação de arquivos e mais (Node)
+      Jogos
+      Geralmente se aproveitando de benefícios do HTML5
+
+    Trata-se de uma linguagem de script. É considerada a camada de comportamento da web. Para utiliza-lo iremos instalar o node em nossa maquina para podermos compilar códigos js.
+    Para isso: 
+      $ sudo apt install nodejs
+
+    Recomenadados:
+      Plugins:
+        Color Highlight
+          
+        Live Server
+          Cria um "servidor" local para vermos as atualizações do site sem recarregar a página
+
+      Fonte:      
+        IBM Plex Mono
+
+      
+-- Configuração do ambiente [NODE + VSCODE] {
+
+  // instalar Node, versão mais recente
+  $ sudo apt-get install nodejs
+
+  // Testar | Verficar versão node e npm
+  $ node -v && npm -v
+
+  Obs: 
+    - npm: Gerenciador de pacotes do node
+    - node: interpretador de códigos JavaScript, assíncrono, com código aberto e orientado a eventos
+
+  // instalar VSCODE
+
+  // instalar Yarn (Gerenciador de pacotes do JS)
+  Será utilizado para instalar ferramentas de terceiros em nossa aplicação
+
+}
+
+-- Visão Geral {
+
+  Algoritmos: Sequencia de passos (receita de bolo). 
+
+    - Suporta conceito de  repetições.
+    - Suporta tomada de decisões
+
+  Estrutura de dados: Estruturar | Organizar | Administrar dados
+
+    - Ordenado | Sequencial
+    - Conceitos de estruturas:
+      - Fila: segue a estrutura FIFO (Firs in, first Out) 
+      - Pilha: segue a estrutura LIFO (Last in, first out) 
+      - Árvore: Pastas com subpastas
+
+  Operações:
+
+    - Lógicas     (Se determinada condição acontecer)
+    - Relacionais (Comparar uma coisa com a outra)
+    - Aritméticas (Calculos)
+    - Atribuições (Atribuir um valor a determinada váriavel)
+
+  A ORDEM IMPORTA
+    Começa por multiplicação e divisão, depois por soma e subtração.
+
+    var total1 = 20 + 5 * 2; // 30
+    var total2 = (20 + 5) * 2; // 50
+    var total3 = 20 / 2 * 5; // 50
+    var total4 = 10 + 10 * 2 + 20 / 2; // 40
+
+  OPERADORES ARITMÉTICOS UNÁRIOS
+    O + e - tenta transformar o valor seguinte em número
+
+    var frase = 'Isso é um teste';
+    +frase; // NaN
+    -frase; // NaN
+
+    var idade = '28';
+    +idade; // 28 (número)
+    -idade; // -28 (número)
+    console.log(+idade + 5); // 33 
+
+    var possuiFaculdade = true;
+    console.log(+possuiFaculdade); // 1
+
+    CONDICIONAIS IF E ELSE
+      Verificar se uma expressão é verdadeira com if, caso contrário o else será ativado.
+
+      var possuiGraduacao = true;
+
+      if(possuiGraduacao) {
+        console.log('Possui graduação');
+      } else {
+        console.log('Não possui graduação');
+      }
+      // retorna Possui Graduação e não executa o else
+
+      O valor dentro dos parênteses sempre será avaliado em false ou true.
+
+      O operador !, nega uma operação booleana. Ou seja, !true é igual a false
+
+  OPERADOR LÓGICO DE NEGAÇÃO !
+
+      // Truthy
+      if(!true) // false
+      if(!1) // false
+      if(!'') // true
+      if(!undefined) // true
+      if(!!' ') // true
+      if(!!'') // false
+
+      Dica, você pode utilizar o !! para verificar se uma expressão é Truthy ou Falsy
+
+  OPERADORES DE COMPARAÇÃO  
+    O == faz uma comparação não tão estrita e o === faz uma comparação estrita, ou seja, o tipo de dado deve ser o mesmo quando usamos ===
+
+    10 == '10'; // true
+    10 == 10; // true
+    10 === '10'; // false
+    10 === 10 // true
+    10 != 15 // true
+    10 != '10' // false
+    10 !== '10' // true
+
+  PARÂMETROS E ARGUMENTOS
+    Ao criar uma função, você pode definir parâmetros.
+
+    Ao executar uma função, você pode passar argumentos.
+
+    // peso e altura são os parâmetros
+    function imc(peso, altura) {
+      const imc = peso / (altura ** 2);
+      return imc;
+    }
+
+    imc(80, 1.80) // 80 e 1.80 são os argumentos
+    imc(60, 1.70) // 60 e 1.70 são os argumentos
+    
+    Separar por vírgula cada parâmetro. Você pode definir mais de um parâmetro ou nenhum também
+
+  PARÊNTESES EXECUTA A FUNÇÃO
+    function corFavorita(cor) {
+      if(cor === 'azul') {
+        return 'Você gosta do céu';
+      } else if(cor === 'verde') {
+        return 'Você gosta de mato';
+      } else {
+        return 'Você não gosta de nada';
+      }
+    }
+    corFavorita(); // retorna 'Você não gosta de nada'
+
+    Se apenas definirmos a função com o function e não executarmos a mesma, nada que estiver dentro dela irá acontecer
+
+  ARGUMENTOS PODEM SER FUNÇÕES
+    Chamadas de Callback, geralmente são funções que ocorrem após algum evento.
+
+    addEventListener('click', function() {
+      console.log('Clicou');
+    });
+    // A função possui dois argumentos
+    // Primeiro é a string 'click'
+    // Segundo é uma função anônima
+
+    Funções anônimas são aquelas em que o nome da função não é definido, escritas como function() {} ou () => {}
+
+  PODE OU NÃO RETORNAR UM VALOR
+    Quando não definimos o return, ela irá retornar undefined. O código interno da função é executado normalmente, independente de existir valor de return ou não.
+
+    function imc(peso, altura) {
+      const imc = peso / (altura ** 2);
+      console.log(imc);
+    }
+
+    imc(80, 1.80); // retorna o imc
+    console.log(imc(80, 1.80)); // retorna o imc e undefined
+    
+
+  VALORES RETORNADOS
+    Uma função pode retornar qualquer tipo de dado e até outras funções.
+
+    function terceiraIdade(idade) {
+      if(typeof idade !== 'number') {
+        return 'Informe a sua idade!';
+      } else if(idade >= 60) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
+    Cuidado, retornar diferentes tipos de dados na mesma função não é uma boa ideia.
+
+  ESCOPO
+    Variáveis e funções definidas dentro de um bloco {}, não são visíveis fora dele.
+
+    function precisoVisitar(paisesVisitados) {
+      var totalPaises = 193;
+      return `Ainda faltam ${totalPaises - paisesVisitados} paises para visitar`
+    }
+    console.log(totalPaises); // erro, totalPaises não definido
+    
+  ESCOPO LÉXICO
+    Funções conseguem acessar variáveis que foram criadas no contexto pai
+
+    var profissao = 'Designer';
+
+    function dados() {
+      var nome = 'André';
+      var idade = 28;
+      function outrosDados() {
+        var endereco = 'Rio de Janeiro';
+        var idade = 29;
+        return `${nome}, ${idade}, ${endereco}, ${profissao}`;
+      }
+      return outrosDados();
+    }
+
+    dados(); // Retorna 'André, 29, Rio de Janeiro, Designer'
+    outrosDados(); // retorna um erro
+    
+  HOISTING
+    Antes de executar uma função, o JS 'move' todas as funções declaradas para a memória
+
+    imc(80, 1.80); // imc aparece no console
+
+    function imc(peso, altura) {
+      const imc = peso / (altura ** 2);
+      console.log(imc);
+    }
+
+    ARRAY
+      É um grupo de valores geralmente relacionados. Servem para guardarmos diferentes valores em uma única variável.
+
+      var videoGames = ['Switch', 'PS4', 'XBox'];
+
+      videoGames[0] // Switch
+      videoGames[2] // Xbox
+      
+      Acesse um elemento da array utilizando [n]
+
+    MÉTODOS E PROPRIEDADES DE UMA ARRAY
+      var videoGames = ['Switch', 'PS4', 'XBox'];
+
+      videoGames.pop(); // Remove o último item e retorna ele
+      videoGames.push('3DS'); // Adiciona ao final da array
+      videoGames.length; // 3
+      
+      Existem diversos outros métodos, como map, reduce, forEach e mais que veremos mais à frente
+
+    FOR LOOP
+      Fazem algo repetidamente até que uma condição seja atingida.
+
+      for (var numero = 0; numero < 10; numero++) {
+        console.log(numero);
+      }
+      // Retorna de 0 a 9 no console
+      
+      O for loop possui 3 partes, início, condição e incremento
+
+    WHILE LOOP
+      var i = 0;
+      while (i < 10) {
+        console.log(i);
+        i++;
+      }
+      // Retorna de 0 a 9 no console
+      
+      O for loop é o mais comum
+
+    ARRAYS E LOOPS
+      var videoGames = ['Switch', 'PS4', 'XBox', '3DS'];
+      for (var i = 0; i < videoGames.length; i++) {
+        console.log(videoGames[i]);
+      }
+      
+      O for loop é o mais comum
+
+    BREAK
+      O loop irá parar caso encontro e palavra break
+
+      var videoGames = ['Switch', 'PS4', 'XBox', '3DS'];
+      for (var i = 0; i < videoGames.length; i++) {
+        console.log(videoGames[i]);
+        if(videoGames[i] === 'PS4') {
+          break;
+        }
+      }
+      
+    FOREACH
+      forEach é um método que executa uma função para cada item da Array. É uma forma mais simples de utilizarmos um loop com arrays (ou array-like)
+
+      var videoGames = ['Switch', 'PS4', 'XBox', '3DS'];
+      videoGames.forEach(function(item) {
+        console.log(item);
+      });
+      // O argumento item será atribuído dinamicamente
+      
+      Podemos passar os seguintes parâmetros item, index e array
+
+    NÃO SE CONFUNDA COM A SINTAXE
+      var numero = 0;
+      var maximo = 50;
+      for(;numero < maximo;) {
+        console.log(numero);
+        numero++;
+      }
+      
+      Não aconselho escrever da forma acima, mas funciona normalmente.
+
+    COMENTÁRIOS
+      Servem para explicar o código
+
+      // Comentário de uma linha
+
+      /*
+      Comentário
+      com diversas
+      linhas
+      */
+
+      // var nome = 'André';
+      
+      Comentar uma linha de código desativa a mesma. Não deixe linhas de código comentadas no arquivo final.
+
+    OPERADORES DE ATRIBUIÇÃO
+      Podem funcionar como formas abreviadas
+
+      var x = 5;
+      var y = 10;
+      x += y; // x = x + y (15)
+      x -= y; // x = x - y (-5)
+      x *= y; // x = x * y (50)
+      x /= y; // x = x / y (0.5)
+      x %= y; // x = x % y (0)
+      x **= y; // x = x ** y (9765625)
+      
+    OPERADOR TERNÁRIO
+      Abreviação de condicionais com if e else
+
+      var idade = 19;
+      var podeBeber = (idade >= 18) ? 'Pode beber' : 'Não pode beber';
+      console.log(podeBeber) // Pode beber
+
+      // condição ? true : false
+      
+      Geralmente utilizado quando precisamos atribuir um valor para uma variável, dependendo de uma condição
+
+    IF ABREVIADO
+      Não é necessário abrir e fechar as chaves {} quando retornamos apenas uma linha de código
+
+      var possuiFaculdade = true;
+      if(possuiFaculdade) console.log('Possui faculdade');
+      else console.log('Não possui faculdade');
+
+      // ou
+      if(possuiFaculdade)
+        console.log('Possui faculdade');
+      else
+        console.log('Não possui faculdade');
+      
+      Eu particularmente prefiro a segunda opção aqui.
+
+      ESCOPO DE FUNÇÃO
+        Variáveis declaradas dentro de funções não são acessadas fora das mesmas.
+
+        function mostrarCarro() {
+          var carro = 'Fusca';
+          console.log(carro);
+        }
+
+        mostrarCarro(); // Fusca no console
+        console.log(carro); // Erro, carro is not defined
+        
+        Escopo evita o conflito entre nomes.
+
+      VARIÁVEL GLOBAL (ERRO)
+        Declarar variáveis sem a palavra chave var, const ou let, cria uma variável que pode ser acessar em qualquer escopo (global). Isso é um erro.
+
+        function mostrarCarro() {
+          carro = 'Fusca';
+          console.log(carro);
+        }
+
+        mostrarCarro(); // Fusca
+        console.log(carro); // Fusca
+        
+        'use strict' impede isso.
+
+      ESCOPO DE FUNÇÃO (PAI)
+        Variáveis declaradas no escopo pai da função, conseguem ser acessadas pelas funções.
+
+        var carro = 'Fusca';
+
+        function mostrarCarro() {
+          var frase = `Meu carro é um ${carro}`;
+          console.log(frase);
+        }
+
+        mostrarCarro(); // Meu carro é um Fusca
+        console.log(carro);  // Fusca
+        
+      ESCOPO DE BLOCO
+        Variáveis criadas com var, vazam o bloco. Por isso com a introdução do ES6 a melhor forma de declarmos uma variável é utilizando const e let, pois estas respeitam o escopo de bloco.
+
+        if(true) {
+          var carro = 'Fusca';
+          console.log(carro);
+        }
+        console.log(carro); // Carro
+        
+      VAR VAZA O BLOCO
+        Mesmo com a condição falsa, a variável ainda será declarada utilizando hoisting e o valor ficará como undefined.
+
+        if(false) {
+          var carro = 'Fusca';
+          console.log(carro);
+        }
+        console.log(carro); // undefined
+        
+      CONST E LET NO LUGAR DE VAR
+        A partir de agora vamos utilizar apenas const e let para declarmos variáveis.
+
+        if(true) {
+          const carro = 'Fusca';
+          console.log(carro);
+        }
+        console.log(carro); // erro, carro is not defined
+        
+      {} CRIA UM BLOCO
+        Chaves {} criam um escopo de bloco, não confundir com a criação de objetos = {}
+
+        {
+          var carro = 'Fusca';
+          const ano = 2018;
+        }
+        console.log(carro); // Carro
+        console.log(ano); // erro ano is not defined
+        
+      FOR LOOP
+        Ao utilizar var dentro de um forloop, que é um bloco, o valor do variável utilizada irá vazar e existir fora do loop.
+
+        for(var i = 0; i < 10; i++) {
+          console.log(`Número ${i}`);
+        }
+        console.log(i); // 10
+        
+      FOR LOOP COM LET
+        Com o let evitamos que o número vaze.
+
+        for(let i = 0; i < 10; i++) {
+          console.log(`Número ${i}`);
+        }
+        console.log(i); // i is not defined
+        
+      CONST
+        Mantém o escopo no bloco, impede a redeclaração e impede a modificação do valor da variável, evitando bugs no código.
+
+        const mes = 'Dezembro';
+        mes = 'Janeiro'; // erro, tentou modificar o valor
+        const semana; // erro, declarou sem valor
+
+        const data = {
+          dia: 28,
+          mes: 'Dezembro',
+          ano: 2018,
+        }
+
+        data.dia = 29; // Funciona
+        data = 'Janeiro'; // erro
+        
+        Variáveis com valores constantes devem utilizar o const.
+
+      LET
+        Mantém o escopo no bloco, impede a redeclaração, mas permite a modificação do valor da variável.
+
+        let ano;
+        ano = 2018;
+        ano++;
+        console.log(ano); // 2019
+
+        let ano = 2020; // erro, redeclarou a variável
+        
+        Geralmente vamos utilizar o const.
+
+      DOCUMENT OBJECT MODEL (DOM)
+        É uma interface que representa documentos HTML e XML através de objetos. Com ela é possível manipular a estrutura, estilo e conteúdo destes documentos.
+
+        console.log(window);
+        // window é o objeto global do browser
+        // possui diferentes métodos e propriedades
+
+        window.innerHeight; // retorna a altura do browser
+
+        HIERARQUIA DOM
+          window > document && location > html > head > body (h1, section, h2....) 
+
+        WINDOW E DOCUMENT
+          São os objetos principais do DOM, boa parte da manipulação é feita através dos seus métodos e propriedades.
+
+          window.alert('Isso é um alerta');
+          alert('Isso é um alerta'); // Funciona
+
+          document.querySelector('h1'); // Seleciona o primeiro h1
+          document.body; // Retorna o body
+          
+          window é o objeto global, por isso não precisamos chamar ele na frente dos seus métodos e propriedades.
+
+        NODE
+          Toda tag html é representada pelo objeto Element e por isso herda os seus métodos e propriedades. Element é um tipo de objeto Node.
+
+          const titulo = document.querySelector('h1');
+
+          titulo.innerText; // retorna o texto;
+          titulo.classList; // retorna as classes;
+          titulo.id; // retorna o id;
+          titulo.offsetHeight; // retorna a altura do elemento;
+
+          titulo.addEventListener('click', callback);
+          // ativa a função callback ao click no titulo
+
+        DOM PARA INICIANTES
+          Seleção de Elementos
+
+        ID
+          getElementById seleciona e retorna elementos do DOM
+
+          // Seleciona pelo ID
+          const animaisSection = document.getElementById('animais');
+          const contatoSection = document.getElementById('contato');
+
+          // Retorna null caso não exista
+          const naoExiste = document.getElementById('teste');
+          
+        CLASSE E TAG
+          getElementsByClassName e getElementsByTagName selecionam e retornam uma lista de elementos do DOM. A lista retornada está ao vivo, significa que se elementos forem adicionados, ela será automaticamente atualizada.
+
+          // Seleciona pela classe, retorna uma HTMLCollection
+          const gridSection = document.getElementsByClassName('grid-section');
+          const contato = document.getElementsByClassName('grid-section contato');
+
+          // Seleciona todas as UL's, retorna uma HTMLCollection
+          const ul = document.getElementsByTagName('ul');
+
+          // Retorna o primeiro elemento
+          console.log(gridSection[0]);
+          
+        SELETOR GERAL ÚNICO
+          querySelector retorna o primeiro elemento que combinar com o seu seletor CSS.
+
+          const animais = document.querySelector('.animais');
+          const contato = document.querySelector('#contato');
+          const ultimoItem = document.querySelector('.animais-lista li:last-child');
+          const linkCSS = document.querySelector('[href^="https://"]');
+          const primeiroUl = document.querySelector('ul');
+
+          // Busca dentro do Ul apenas
+          const navItem = primeiroUl.querySelector('li');
+          
+        SELETOR GERAL LISTA
+          querySelectorAll retorna todos os elementos compatíveis com o seletor CSS em uma NodeList
+
+          const gridSection = document.querySelectorAll('.grid-section');
+          const listas = document.querySelectorAll('ul');
+          const titulos = document.querySelectorAll('.titulo');
+          const fotosAnimais = document.querySelectorAll('.animais-lista img');
+
+          // Retorna o segundo elemento
+          console.log(gridSection[1]);
+          
+          Diferente do getElementsByClassName, a lista aqui é estática
+
+        HTMLCOLLECTION VS NODELIST
+          A diferença está nos métodos e propriedades de ambas. Além disso a NodeList retornada com querySelectorAll é estática.
+
+          const titulo = document.querySelector('.titulo');
+          const gridSectionHTML = document.getElementsByClassName('grid-section');
+          const gridSectionNode = document.querySelectorAll('.grid-section');
+
+          titulo.classList.add('grid-section');
+
+          console.log(gridSectionHTML); // 4 itens
+          console.log(gridSectionNode); // 3 itens
+          
+        ARRAY-LIKE
+          HTMLCollection e NodeList são array-like, parecem uma array mas não são. O método de Array forEach() por exemplo, existe apenas em NodeList.
+
+          const gridSection = document.querySelectorAll('.grid-section');
+
+          gridSection.forEach(function(gridItem, index, array) {
+            gridItem.classList.add('azul');
+            console.log(index) // index do item na array
+            console.log(array) // a array completa
+          });
+          
+          É possível transformar array-like em uma Array real, utilizando o método 
+          Array.from(gridSection)
+
+          FOREACH
+            Constantemente vamos selecionar uma lista de itens do dom. A melhor forma para interagirmos com os mesmos é utilizando o método forEach.
+
+            const imgs = document.querySelectorAll('img');
+
+            imgs.forEach(function(item){
+              console.log(item);
+            });
+            
+          PARÂMETROS DO FOREACH
+            O primeiro parâmetro é o callback, ou seja, a função que será ativada a cada item. Esse função pode receber três parâmetros: valorAtual, index e array;
+
+            const imgs = document.querySelectorAll('img');
+
+            imgs.forEach(function(valorAtual, index, array){
+              console.log(item); // o item atual no loop
+              console.log(index); // o número do index
+              console.log(array); // a Array completa
+            });
+            
+          FOREACH E ARRAY
+            forEach é um método de Array, alguns objetos array-like possuem este método. Caso não possua, o ideal é transformá-los em uma array.
+
+            const titulos = document.getElementsByClassName('titulo');
+            const titulosArray = Array.from(titulos);
+
+            titulosArray.forEach(function(item){
+              console.log(item);
+            });
+            
+          ARROW FUNCTION
+            Sintaxe curta em relação a function expression. Basta remover a palavra chave function e adicionar a fat arrow => após os argumentos.
+
+            const imgs = document.querySelectorAll('img');
+
+            imgs.forEach((item) => {
+              console.log(item);
+            });
+            
+          ARGUMENTOS E PARÊNTESES
+            const imgs = document.querySelectorAll('img');
+
+            // argumento único não precisa de parênteses
+            imgs.forEach(item => {
+              console.log(item);
+            });
+
+            // multiplos argumentos precisam de parênteses
+            imgs.forEach((item, index) => {
+              console.log(item, index);
+            });
+
+            // sem argumentos precisa dos parênteses, mesmo vazio
+            let i = 0;
+            imgs.forEach(() => {
+              console.log(i++);
+            });
+            
+            É melhor utilizar os parênteses
+
+          RETURN
+            É possível omitir as chaves {} para uma função que retorna uma linha.
+
+            const imgs = document.querySelectorAll('img');
+
+            imgs.forEach(item => 
+              console.log(item)
+            );
+
+            imgs.forEach(item => console.log(item));
+            
+            Não é permitido fechar a linha com ;
+
+            CLASSLIST
+            Retorna uma lista com as classes do elemento. Permite adicionar, remover e verificar se contém.
+
+            const menu = document.querySelector('.menu');
+
+            menu.className; // string
+            menu.classList; // lista de classes
+            menu.classList.add('ativo');
+            menu.classList.add('ativo', 'mobile'); // duas classes
+            menu.classList.remove('ativo');
+            menu.classList.toggle('ativo'); // adiciona/remove a classe
+            menu.classList.contains('ativo'); // true ou false
+            menu.classList.replace('ativo', 'inativo');
+            
+          ATTRIBUTES
+            Retorna uma array-like com os atributos do elemento.
+
+            const animais = document.querySelector('.animais');
+
+            animais.attributes; // retorna todos os atributos
+            animais.attributes[0]; // retorna o primeiro atributo
+            
+          GETATTRIBUTE E SETATTRIBUTE
+            Métodos que retornam ou definem de acordo com o atributo selecionado
+
+            const img = document.querySelector('img');
+
+            img.getAttribute('src'); // valor do src
+            img.setAttribute('alt', 'Texto Alternativo'); // muda o alt
+            img.hasAttribute('id'); // true / false
+            img.removeAttribute('alt'); // remove o alt
+
+            img.hasAttributes(); // true / false se tem algum atributo
+            
+            É muito comum métodos de get e set;
+
+          READ ONLY VS WRITABLE
+            Existem propriedades que não permitem a mudança de seus valores, essas são considerados Read Only, ou seja, apenas leitura.
+
+            const animais = document.querySelector('.animais');
+
+            animais.className; // string com o nome das classes
+            animais.className = 'azul'; // substitui completamente a string
+            animais.className += ' vermelho'; // adiciona vermelho à string
+
+            animais.attributes = 'class="ativo"'; // não funciona, read-only
+            
+            Lembre-se que podemos modificar o valor de uma propriedade objeto.propriedade = ''
+
+            HEIGHT E WIDTH
+              Estas são propriedades e métodos dos objetos Element e HTMLElement, a maioria delas são Read Only
+
+              const section = document.querySelector('.animais');
+
+              section.clientHeight; // height + padding
+              section.offsetHeight; // height + padding + border
+              section.scrollHeight; // height total, mesmo dentro de scroll
+              
+              Mesma coisa para o Width, clientWidth ...
+
+            OFFSETTOP E OFFSETLEFT
+              const section = document.querySelector('.animais');
+
+              // Distância entre o topo do elemento e o topo da página
+              section.offsetTop;
+
+              // Distância entre o canto esquerdo do elemento
+              // e o canto esquerdo da página
+              section.offsetLeft;
+              
+            GETBOUNDINGCLIENTRECT()
+              Método que retorna um objeto com valores de width, height, distâncias do elemento e mais.
+
+              const section = document.querySelector('.animais');
+
+              const rect = section.getBoundingClientRect();
+              rect.height; // height do elemento
+              rect.width; // width do elemento
+              rect.top; // distância entre o topo do elemento e o scroll
+              
+            WINDOW
+              window.innerWidth; // width do janela
+              window.outerWidth; // soma dev tools também
+              window.innerHeight; // height do janela
+              window.outerWidth; // soma a barra de endereço
+
+              window.pageYOffset; // distância total do scroll horizontal
+              window.pageXOffset; // distância total do scroll vertical
+
+              if(window.innerWidth < 600) {
+                console.log('Tela menor que 600px');
+              }
+              
+            MATCHMEDIA();
+              Utilize um media-querie como no CSS para verificar a largura do browser
+
+              const small = window.matchMedia('(max-width: 600px)');
+
+              if(small.matches) {
+                console.log('Tela menor que 600px')
+              } else {
+                console.log('Tela maior que 600px')
+              }
+
+            ADDEVENTLISTENER
+              Adiciona uma função ao elemento, esta chamada de callback, que será ativada assim que certo evento ocorrer neste elemento.
+
+              const img = document.querySelector('img');
+
+              // elemento.addEventListener(event, callback, options)
+              img.addEventListener('click', function() {
+                console.log('Clicou');
+              })Adiciona uma função ao elemento, esta chamada de callback, que será ativada assim que certo evento ocorrer neste elemento.
+
+              const img = document.querySelector('img');
+
+              // elemento.addEventListener(event, callback, options)
+              img.addEventListener('click', function() {
+                console.log('Clicou');
+              })
+              
+              O terceiro parâmetro é opcional.
+
+            CALLBACK
+              É boa prática separar a função de callback do addEventListener, ou seja, declarar uma função ao invés de passar diretamente uma função anônima
+
+              const img = document.querySelector('img');
+              function callback() {
+                console.log('Clicou');
+              }
+
+              img.addEventListener('click', callback); // 🚀
+              img.addEventListener('click', callback()); // undefined
+              img.addEventListener('click', function() {
+                console.log('Clicou');
+              })
+              img.addEventListener('click', () => {
+                console.log('Clicou');
+              })
+              
+            EVENT
+              O primeiro parâmetro do callback é referente ao evento que ocorreu.
+
+              const img = document.querySelector('img');
+
+              function callback(event) {
+                console.log(event);
+              }
+
+              img.addEventListener('click', callback);
+              
+              Geralmente utilizam e como nome do parâmetro
+
+            PROPRIEDADES DO EVENT
+              const animaisLista = document.querySelector('.animais-lista');
+
+              function executarCallback(event) {
+                const currentTarget = event.currentTarget; // this
+                const target = event.target; // onde o clique ocorreu
+                const type = event.type; // tipo de evento
+                const path = event.path;
+                console.log(currentTarget, target, type, path);
+              }
+
+              animaisLista.addEventListener('click', executarCallback);
+              
+            EVENT.PREVENTDEFAULT()
+              Previne o comportamento padrão do evento no browser. No caso de um link externo, por exemplo, irá previnir que o link seja ativado.
+
+              const linkExterno = document.querySelector('a[href^="http"]');
+
+              function clickNoLink(event) {
+                event.preventDefault();
+                console.log(event.currentTarget.href);
+              }
+
+              linkExterno.addEventListener('click', clickNoLink);
+              
+            THIS
+              A palavra chave this é uma palavra especial de JavaScript, que pode fazer referência a diferentes objetos dependendo do contexto. No caso de eventos, ela fará referência ao elemento em que addEventListener foi adicionado.
+
+              const img = document.querySelector('img');
+
+              function callback(event) {
+                console.log(this); // retorna a imagem
+                console.log(this.getAttribute('src'));
+              }
+
+              img.addEventListener('click', callback);
+              
+              Geralmente igual ao event.currentTarget
+
+            DIFERENTES EVENTOS
+              Existem diversos eventos como click, scroll, resize, keydown, keyup, mouseenter e mais. Eventos podem ser adicionados a diferentes elementos, como o window e document também.
+
+              const h1 = document.querySelector('h1');
+
+              function callback(event) {
+                console.log(event.type, event);
+              }
+
+              h1.addEventListener('click', callback);
+              h1.addEventListener('mouseenter', callback);
+              window.addEventListener('scroll', callback);
+              window.addEventListener('resize', callback);
+              window.addEventListener('keydown', callback);
+              
+              https://developer.mozilla.org/en-US/docs/Web/Events
+
+            KEYBOARD
+              Você pode adicionar atalhos para facilitar a navegação no seu site, através de eventos do keyboard.
+
+              function handleKeyboard(event) {
+                if(event.key === 'a')
+                  document.body.classList.toggle('azul');
+                else if(event.key === 'v')
+                  document.body.classList.toggle('vermelho');
+              }
+
+              window.addEventListener('keydown', callback);
+              
+            FOREACH E EVENTOS
+              O método addEventListener é adicionado à um único elemento, então é necessário um loop entre elementos de uma lista, para adicionarmos à cada um deles.
+
+              const imgs = document.querySelectorAll('img');
+
+              function imgSrc(event) {
+                const src = event.currentTarget.getAttribute('src');
+                console.log(src);
+              }
+
+              imgs.forEach((img) => {
+                img.addEventListener('click', imgSrc);
+              });
+              
+              O terceiro parâmetro é opcional.
+
+            CALLBACK
+              É boa prática separar a função de callback do addEventListener, ou seja, declarar uma função ao invés de passar diretamente uma função anônima
+
+              const img = document.querySelector('img');
+              function callback() {
+                console.log('Clicou');
+              }
+
+              img.addEventListener('click', callback); // 🚀
+              img.addEventListener('click', callback()); // undefined
+              img.addEventListener('click', function() {
+                console.log('Clicou');
+              })
+              img.addEventListener('click', () => {
+                console.log('Clicou');
+              })
+              
+            EVENT
+              O primeiro parâmetro do callback é referente ao evento que ocorreu.
+
+              const img = document.querySelector('img');
+
+              function callback(event) {
+                console.log(event);
+              }
+
+              img.addEventListener('click', callback);
+              
+              Geralmente utilizam e como nome do parâmetro
+
+            PROPRIEDADES DO EVENT
+              const animaisLista = document.querySelector('.animais-lista');
+
+              function executarCallback(event) {
+                const currentTarget = event.currentTarget; // this
+                const target = event.target; // onde o clique ocorreu
+                const type = event.type; // tipo de evento
+                const path = event.path;
+                console.log(currentTarget, target, type, path);
+              }
+
+              animaisLista.addEventListener('click', executarCallback);
+              
+            EVENT.PREVENTDEFAULT()
+              Previne o comportamento padrão do evento no browser. No caso de um link externo, por exemplo, irá previnir que o link seja ativado.
+
+              const linkExterno = document.querySelector('a[href^="http"]');
+
+              function clickNoLink(event) {
+                event.preventDefault();
+                console.log(event.currentTarget.href);
+              }
+
+              linkExterno.addEventListener('click', clickNoLink);
+              
+            THIS
+              A palavra chave this é uma palavra especial de JavaScript, que pode fazer referência a diferentes objetos dependendo do contexto. No caso de eventos, ela fará referência ao elemento em que addEventListener foi adicionado.
+
+              const img = document.querySelector('img');
+
+              function callback(event) {
+                console.log(this); // retorna a imagem
+                console.log(this.getAttribute('src'));
+              }
+
+              img.addEventListener('click', callback);
+              
+              Geralmente igual ao event.currentTarget
+
+            DIFERENTES EVENTOS
+              Existem diversos eventos como click, scroll, resize, keydown, keyup, mouseenter e mais. Eventos podem ser adicionados a diferentes elementos, como o window e document também.
+
+              const h1 = document.querySelector('h1');
+
+              function callback(event) {
+                console.log(event.type, event);
+              }
+
+              h1.addEventListener('click', callback);
+              h1.addEventListener('mouseenter', callback);
+              window.addEventListener('scroll', callback);
+              window.addEventListener('resize', callback);
+              window.addEventListener('keydown', callback);
+              
+              https://developer.mozilla.org/en-US/docs/Web/Events
+
+            KEYBOARD
+              Você pode adicionar atalhos para facilitar a navegação no seu site, através de eventos do keyboard.
+
+              function handleKeyboard(event) {
+                if(event.key === 'a')
+                  document.body.classList.toggle('azul');
+                else if(event.key === 'v')
+                  document.body.classList.toggle('vermelho');
+              }
+
+              window.addEventListener('keydown', callback);
+              
+            FOREACH E EVENTOS
+              O método addEventListener é adicionado à um único elemento, então é necessário um loop entre elementos de uma lista, para adicionarmos à cada um deles.
+
+              const imgs = document.querySelectorAll('img');
+
+              function imgSrc(event) {
+                const src = event.currentTarget.getAttribute('src');
+                console.log(src);
+              }
+
+              imgs.forEach((img) => {
+                img.addEventListener('click', imgSrc);
+              });
+
+            OUTERHTML, INNERHTML E INNERTEXT
+              Propriedades que retornam uma string contendo o html ou texto. É possível atribuir um novo valor para as mesmas element.innerText = 'Novo Texto'.
+
+              const menu = document.querySelector('.menu');
+
+              menu.outerHTML; // todo o html do elemento
+              menu.innerHTML; // html interno
+              menu.innerText; // texto, sem tags
+
+              menu.innerText = '<p>Texto</p>'; // a tag vai como texto
+              menu.innerHTML = '<p>Texto</p>'; // a tag é renderizada
+              
+            TRASVERSING
+              Como navegar pelo DOM, utilizando suas propriedades e métodos.
+
+              const lista = document.querySelector('.animais-lista');
+
+              lista.parentElement; // pai
+              lista.parentElement.parentElement; // pai do pai
+              lista.previousElementSibling; // elemento acima
+              lista.nextElementSibling; // elemento abaixo
+
+              lista.children; // HTMLCollection com os filhos
+              lista.children[0]; // primeiro filho
+              lista.children[--lista.children.length]; // último filho
+
+              lista.querySelectorAll('li'); // todas as LI's
+              lista.querySelector('li:last-child'); // último filho
+              
+            ELEMENT VS NODE
+              Element's represetam um elemento html, ou seja, uma tag. Node representa um nó, e pode ser um elemento (Element), texto, comentário, quebra de linha e mais.
+
+              const lista = document.querySelector('.animais-lista');
+
+              lista.previousElementSibling; // elemento acima
+              lista.previousSibling; // node acima
+
+              lista.firstChild; // primeiro node child
+              lista.childNodes; // todos os node child
+              
+              Geralmente estamos atrás de um elemento e não de qualquer node em si.
+
+            MANIPULANDO ELEMENTOS
+              É possível mover elementos no dom com métodos de Node.
+
+              const lista = document.querySelector('.animais-lista');
+              const contato = document.querySelector('.contato');
+              const titulo = contato.querySelector('.titulo');
+
+              contato.appendChild(lista); // move lista para o final de contato
+              contato.insertBefore(lista, titulo); // insere a lista antes de titulo
+              contato.removeChild(titulo); // remove titulo de contato
+              contato.replaceChild(lista, titulo); // substitui titulo por lista
+              
+            NOVOS ELEMENTOS
+              Podemos criar novos elementos com o método createElement()
+
+              const animais = document.querySelector('.animais');
+
+              const novoH1 = document.createElement('h1');
+              novoH1.innerText = 'Novo Título';
+              novoH1.classList.add('titulo');
+
+              animais.appendChild(novoH1);
+              
+            CLONAR ELEMENTOS
+              Todo elemento selecionado é único. Para criarmos um novo elemento baseado no anterior, é necessário utilizar o método cloneNode()
+
+              const titulo = document.querySelector('h1');
+              const titulo2 = document.querySelector('h1');
+              const novoTitulo = titulo;
+              // titulo, titulo2 e novoTitulo são iguais
+
+              const cloneTitulo = titulo.cloneNode(true);
+              const contato = document.querySelector('.contato');
+              contato.appendChild(cloneTitulo);
+              
+              true sinaliza para incluir os filhos
+
+            ADICIONAR CLASSES PARA MANIPULAÇÃO
+              A ideia de navegação por tabs, é ter uma lista de itens que controla a visualização de uma lista de conteúdo. Cada item da lista possui um conteúdo relacionado ao mesmo.
+
+              <!-- Primeiro, adicionar classes que irão
+              facilitar a manipulação dos elementos -->
+              <ul class="animais-lista js-tabmenu">
+                ...
+              </ul>
+              <div class="animais-descricao js-tabcontent">
+                ...
+              </div>
+              
+            SELECIONAR OS ITENS
+              const tabMenu = document.querySelectorAll('.js-tabmenu li');
+              const tabContent = document.querySelectorAll('.js-tabmenu section');
+              
+            FUNÇÃO CALLBACK
+              Recebe index como parâmetro para ativar a tab. Sempre que ativar, remove a classe ativo de todos os outros elementos.
+
+
+              function activeTab(index) {
+                tabContent.forEach((content) => {
+                  content.classList.remove('ativo');
+                });
+                tabContent[index].classList.add('ativo');
+              }
+              
+            ADICIONAR O EVENTO
+              Neste caso precisamos passar antes a fução anônima no callback, para podermos passar o index como argumento de activeTab
+
+              tabMenu.forEach((itemMenu, index) => {
+                itemMenu.addEventListener('click', () => {
+                  activeTab(index);
+                });
+              });
+              
+            ASSIM QUE CARREGAR
+              Adicionar a classe ativo ao primeiro elemento e adicionar a classe js ao html. Assim identificamos se o JavaScript está habilitado ou não.
+
+              <!-- No head do borwser -->
+              <script>document.documentElement.className += ' js';</script>
+              
+              // Verificar se existe elemento em tabContent e tabMenu
+              if(tabContent.length && tabMenu.length) {
+                tabContent[0].classList.add('ativo');
+                ...
+              }
+              
+            ANIMAÇÃO COM CSS
+              Animação simples com css, sai de display none para display block.
+
+              .js .js-tabcontent section {
+                display: none;
+              }
+
+              .js-tabcontent section.ativo {
+                display: block !important;
+                animation: show .5s forwards;
+              }
+
+              @keyframes show {
+                from {
+                  opacity: 0;
+                  transform: translate3d(-30px, 0, 0);
+                }
+                to {
+                  opacity: 1;
+                  transform: translate3d(0px, 0, 0);
+                }
+              }
+              
+              Lembre-se, o display none remove o texto até dos leitores de tela (acessibilidade)
+
+            Accordion-list
+              Trta-se de uma navegação onde você clica em um elemento e ele se expande, apresentando mais elementos. Para mais procuurar sobre, no projeto animais fantasticos eu utilizo no FAQ.
+
+            OBS:
+              Sempre isolar blocos de scripts js através de funções para não originar erros no console.
+
+}
+
+-- Objetos {
+
+    OBJETOS
+      Criar um objeto é simples, basta definirmos uma variável e iniciar a definição do seu valor com chaves {}. Mas e se precisarmos criar um novo objeto, com as mesmas características do anterior? É possível com o Object.create, mas veremos ele mais tarde.
+
+      const carro = {
+        marca: 'Marca',
+        preco: 0,
+      }
+
+      const honda = carro;
+      honda.marca = 'Honda';
+      honda.preco = 4000;
+
+      const fiat = carro;
+      fiat.marca = 'Fiat';
+      fiat.preco = 3000;
+      
+      carro, fiat e honda apontam para o mesmo objeto.
+
+    CONSTRUCTOR FUNCTIONS
+      Para isso existem as Constructor Functions, ou seja, Funções Construtoras que são responsáveis por construir novos objetos sempre que chamamos a mesma.
+
+      function Carro() {
+        this.marca = 'Marca';
+        this.preco = 0;
+      }
+
+      const honda = new Carro();
+      honda.marca = 'Honda';
+      honda.preco = 4000;
+      const fiat = new Carro();
+      fiat.marca = 'Fiat';
+      fiat.preco = 3000;
+      
+      Usar Pascal Case, ou seja, começar com letra maiúscula.
+
+    NEW KEYWORD
+      A palavra chave new é responsável por criar um novo objeto baseado na função que passarmos a frente dela.
+
+      const honda = new Carro();
+
+      // 1 Cria um novo objeto
+      honda = {};
+
+      // 2 Define o protótipo
+      honda.prototype = Carro.prototype;
+
+      // 3 Aponta a variável this para o objeto
+      this = honda;
+
+      // 4 Executa a função, substituindo this pelo objeto
+      honda.marca = 'Marca';
+      honda.preco = 0;
+
+      // 5 Retorna o novo objeto
+      return honda = {
+        marca: 'Marca',
+        preco: 0,
+      }
+      
+    PARÂMETROS E ARGUMENTOS
+      Podemos passar argumentos que serão utilizados no momento da criação do objeto.
+
+      function Carro(marca, preco) {
+        this.marca = marca;
+        this.preco = preco;
+      }
+
+      const honda = new Carro('Honda', 4000);
+      const fiat = new Carro('Fiat', 3000);
+      
+    THIS KEYWORD
+      O this faz referência ao próprio objeto construído com a Constructor Function.
+
+      function Carro(marca, precoInicial) {
+        const taxa = 1.2;
+        const precoFinal = precoInicial * taxa;
+        this.marca = marca;
+        this.preco = precoFinal;
+        console.log(this);
+      }
+
+      const honda = new Carro('Honda', 2000);
+      
+      Variáveis dentro da Constructor estão "protegidas".
+
+    EXEMPLO REAL
+      Quando mudamos a propriedade seletor, o objeto Dom irá passar a selecionar o novo seletor em seus métodos.
+
+      const Dom = {
+        seletor: 'li',
+        element() {
+          return document.querySelector(this.seletor);
+        },
+        ativo() {
+          this.element().classList.add('ativo');
+        },
+      }
+
+      Dom.ativo(); // adiciona ativo ao li
+      Dom.seletor = 'ul';
+      Dom.ativo(); // adiciona ativo ao ul
+      
+    CONSTRUCTOR FUNCTION REAL
+      Um objeto criado com uma Constructor, não irá influenciar em outro objeto criado com a mesma Constructor.
+
+      function Dom() {
+        this.seletor = 'li';
+        const element = document.querySelector(this.seletor);
+        this.ativo = function() {
+          element.classList.add('ativo');
+        };
+      }
+
+      const lista = new Dom();
+      lista.seletor = 'ul';
+      lista.ativo();
+
+      const lastLi = new Dom();
+      lastLi.seletor = 'li:last-child';
+      lastLi.ativo();
+      
+    LEMBRE-SE DE USAR PARÂMETROS
+      function Dom(seletor) {
+        const element = document.querySelector(seletor);
+        this.ativo = function(classe) {
+          element.classList.add(classe);
+        };
+      }
+
+      const lista = new Dom('ul');
+      lista.ativo('ativo');
+
+      const lastLi = new Dom('li:last-child');
+      lastLi.ativo('ativo');
+
+}
+
+
+-- Variáveis {
+  
+  - Tipos
+    String = "blabla";
+    integer = 5
+    float = 80.9;
+    boolean = true | false;
+    array = [];
+    objetos = {};
+    symbol = Symbol()
+
+    OBJETOS
+      Conjunto de variáveis e funções, que são chamadas de propriedades e métodos.
+
+      var pessoa = {
+        nome: 'André',
+        idade: 28,
+        profissao: 'Designer',
+        possuiFaculdade: true,
+      }
+
+      pessoa.nome; // 'André'
+      pessoa.possuiFaculdade; // true
+      
+      Propriedades e métodos consistem em nome (chave) e valor
+
+    MÉTODOS
+      É uma propriedade que possui uma função no local do seu valor.
+
+      var quadrado = {
+        lados: 4,
+        area: function(lado) {
+        return lado * lado;
+      },
+        perimetro: function(lado) {
+          return this.lados * lado;
+        },
+      }
+
+      quadrado.lados; // 4
+      quadrado.area(5); // 25
+      quadrado.perimetro(5); // 20
+      
+    MÉTODOS
+      Abreviação de area: function() {} para area() {}, no ES6+
+
+      var quadrado = {
+        lados: 4,
+        area(lado) {
+          return lado * lado;
+        },
+        perimetro(lado) {
+          return this.lados * lado;
+        },
+      }
+    
+      ORGANIZAR O CÓDIGO
+        Objetos servem para organizar o código em pequenas partes reutilizáveis.
+
+        Math.PI; // 3.14
+        Math.random(); // número aleatório
+
+        var pi = Math.PI;
+        console.log(pi); // 3.14
+        
+        Math é um objeto nativo de JavaScript. Já percebeu que console é um objeto e log() um método?
+
+      CRIAR UM OBJETO
+        Um objeto é criado utilizando as chaves {}
+
+        var carro = {};
+        var pessoa = {};
+
+        console.log(typeof carro); // 'object'
+        
+      DOT NOTATION GET
+        A seguir acessamos as propriedades de objetos e métodos usando notação de ponto. O objeto nome (menu) atua como namespace (espaço de nomes) — ele deve ser digitado primeiro para que você acesse qualquer 
+        coisa encapsulada dentro do objeto. Depois você escreve um ponto, então o item que quer acessar — isso pode ser o nome de uma simples propriedade, um item de um array ou a chamada para um dos métodos
+        do objeto, por exemplo: 
+          
+          var menu = {
+            width: 800,
+            height: 50,
+            backgroundColor: '#84E',
+          }
+
+          var bg = menu.backgroundColor; // '#84E'
+
+          Há outra forma de acessar propriedades do objeto — usando notação de colchetes:
+
+          Ao invés de:
+
+          menu.backgroundColor
+          
+          Fica:
+
+          menu['backgroundColor']
+
+          Fica muito parecido com a maneira que acessamos itens de um array, e é basicamente a mesma coisa, só que ao invés de usarmos um número de índice para selecionar um item, usamos o nome associado a cada valor. Não é por menos que objetos às vezes são chamados de arrays associativos — eles mapeiam strings a valores do mesmo modo que arrays mapeiam números a valores.
+
+          // Setando membros do objeto
+          Até agora nós apenas procuramos receber (ou pegar) membros de objetos — podemos também setar 
+          (atualizar) o valor de membros de objetos simplesmente declarando o membro que queremos setar
+          (usando notação de ponto ou colchete), tipo assim:
+
+          menu.color = #fff;
+          menu.name.teste = "Principal";
+
+          Tente escrever as linhas acima e então apanhar seus membros novamente para ver como mudaram. Assim:
+
+          menu.color
+          menu['name']['teste']
+
+          Não podemos APENAS atualizar valores existentes de propriedades e métodos; podemos também criar membros completamente novos. Exemplo de um objeto pessoa:
+
+          var pessoa = [
+            name: "Jonas"
+          ]
+
+          pessoa['olhos'] = 'castanho'.
+          pessoa.despedida = function() { alert( "Adeus a todos!" ); }
+
+          Podemos testar nossos novos membros:
+
+          pessoa['olhos'];
+          pessoa.despedida();
+
+          Um aspecto útil de notação de colchetes é que ela pode ser usadada não apenas para setar valores 
+          dinamicamente, mas também nomes de membros. Vamos dizer que queremos que usuários possam armazenar 
+          tipos de valores personalizados em seus dados de 'pessoa', digitando o nome e o valor do membro em
+          dois inputs de texto. Podemos obter esses valores dessa forma:
+
+          var myDataName = nameInput.value;
+          var myDataValue = nameValue.value;
+
+          Podemos, então, adicionar esse novo nome e valor ao objeto pessoa assim:
+
+          pessoa[myDataName] = myDataValue;
+
+          Para testar isso, tente adicionar as seguinte linhas em seu código, abaixo do fechamento da chaves do objeto pessoa :
+
+          var myDataName = 'altura';
+          var myDataValue = '1.75m';
+          pessoa[myDataName] = myDataValue;
+
+          Agora tente salvar e atualizar, entrando o seguinte no seu input de texto:
+
+          pessoa.altura
+
+          Adicionar uma propriedade a um objeto usando o método acima não é possível com a notação ponto,
+          que só aceita um nome de membro literal, não aceita valor de variável apontando para um nome.
+
+      
+      DOT NOTATION SET
+        Substitua o valor de uma propriedade utilizando . e o = após o nome da mesma.
+
+        var menu = {
+          width: 800,
+          height: 50,
+          backgroundColor: '#84E',
+        }
+
+        menu.backgroundColor = '#000';
+        console.log(menu.backgroundColor); // '#000'
+        
+      ADICIONAR PROPRIEDADES E MÉTODOS
+        Basta adicionar um novo nome e definir o valor.
+
+        var menu = {
+          width: 800,
+        }
+
+        menu.height = 50;
+        menu.position = 'fixed';
+      
+      PALAVRA-CHAVE THIS
+        this irá fazer uma referência ao próprio objeto.
+
+        var height = 120;
+          var menu = {
+          width: 800,
+          height: 50,
+          metadeHeight() {
+          return this.height / 2;
+          }
+        }
+
+        menu.metadeHeight(); // 25
+        // sem o this, seria 60
+        
+        this irá retornar o próprio objeto
+
+      PROTÓTIPO E HERANÇA
+        O objeto herda propriedades e métodos do objeto que foi utilizado para criar o mesmo.
+
+        var menu = {
+          width: 800,
+        }
+
+        menu.hasOwnProperty('width') // true
+        menu.hasOwnProperty('height') // false
+        
+        hasOwnProperty é um método de Object
+
+      TUDO É OBJETO
+        Strings, Números, Boolean, Objetos e mais, possuem propriedades e métodos. Por isso são objetos.
+
+        var nome = 'André';
+
+        nome.length; // 5
+        nome.charAt(1); // 'n'
+        nome.replace('ré', 'rei'); // 'Andrei'
+        nome; // 'André'
+        
+        Uma string herda propriedades e métodos do construtor String()
+
+        NÚMEROS
+        var altura = 1.8;
+
+        altura.toString(); // '1.8'
+        altura.toFixed(); // '2'
+        
+        Por um breve momento o número é envolvido em um Objeto (coerção), tendo acesso assim as suas propriedades e métodos
+
+        FUNÇÕES
+        function areaQuadrado(lado) {
+          return lado * lado;
+        }
+
+        areaQuadrado.toString();
+        //"function areaQuadrado(lado) {
+        //  return lado * lado;
+        //}"
+
+        areaQuadrado.length; // 1
+        
+        ELEMENTOS DO DOM
+        <a class="btn">Clique</a>
+        
+        var btn = document.querySelector('.btn');
+
+        btn.classList.add('azul') // adiciona a classe azul
+        btn.innerText; // 'Clique'
+        btn.addEventListener('click', function() {
+          console.log('Clicou')
+        })
+        
+        Praticamente todos os efeitos com JS são feitos utilizando propriedades e métodos de objetos do DOM.
+
+        OBJETOS REVOLUCIONARAM A PROGRAMAÇÃO
+        Web API's são métodos e propriedades que permitem a interação JavaScript e Browser.
+   
+}
+
+-- Funções {
+
+  Em js ao invés de métodos, temos funções, exemplo de função
+
+  function areaQuadrado(lado) {
+      return lado * lado
+  }
+
+  areaQuadrado(4)
+
+  Resultado:
+    16
+
+    typeof
+    Ver o tipo da variavel, exemplo: console.log(typeof nome);
+
+}
+
+-- Configurando o Babel {
+
+    // Inicializando repositório yarn
+    $ yarn init
+
+    // Adicionando dependências (Essa será responsável por permitir que seja utilizado
+    interface de linha de comando do babel)
+    $ yarn add @babel/cli
+
+    // Adicionando dependências (Entender ambiente de trabalho (browser), e irá Converter
+    features do ES6, ES7, ES8, e etc.. para o que o navegador atual entende.)
+    $ yarn add @babel/preset-env
+
+    // Adicionando dependências
+    $ yarn add @babel/core
+
+    // Criando arquivo Babel
+    $ nano .babelrc {
+
+      {
+        "presets": ["@babel/preset-env"]
+      }
+
+    }
+
+    // Criamos um arquivo de exmplo que será convertido, nele colocamos apenas uma 'class'
+    que foi introduzina no ES6, após isso, no arquivo package.json, adicionamos um bloco intitulado
+    'scripts' para criar o arquivo de convrsão de nosso código atual para um formato que os Navegadores
+    entendam
+
+    > package.json {
+       
+       ...
+
+       "scripts": {
+         "dev": "babel ./main.js -o ./bundle.js"      // Onde main.js é nosso arquivo com a classe que 
+       }                                              // será convertido e bundle.js será o arquivo
+                                                      // final convertido.
+    }
+
+    // Após isso para realizar a conversão:
+    $ yarn <nomeScript>     // o mesmo é setado no 'package.json'
+
+    // Agora o arquivo já esta convertido com o nome "bundle.js"
+
+    // Outra funcionalidade que da para fazer é
+    // No > package.json {
+       
+       ...
+
+       "scripts": 
+         "dev": "babel ./main.js -o ./bundle.js -w"     // Adicionado o '-w', o arquivo main.js
+                                                        // irá ser monitorado, toda alteração irá
+                                                        // converter o código no arquivo 'bundle.js' 
+}
+
+-- Classes {
+
+   // sitaxe:
+   class <nomeDaClasse> {
+      ...
+   }
+
+   // Primeiro método a ser utilizado ao instanciar novas classes / objetos:
+   constructor() {
+
+   } 
+   
+   // Podemos definir no mesmo, ações que serão disparadas ao instanciar novas classes ou para 
+   declarar novas váriaveis
+   class <nomeDaClasse> {
+       constructor() {
+         this.todos = [];
+       } 
+   }
+
+   // Classes estáticas
+   static <nomeClasse>() {}       // Utilizado quando queremos passar algo e obter o 
+                                  // retorno de algo que não depende de outras classes 
+}
+
+-- JSON {
+
+    https://developer.mozilla.org/pt-BR/docs/Aprender/JavaScript/Objetos/JSON
+
+}
+
+-- Math {
+
+  // Objeto proveniente da API JS
+
+  - Possui funções e constantes pré-definidos
+
+  Math.PI * Math.pow(5.6, 2)  // PI * a base elevada ao expoente 
+
+}
+
+-- Strings {
+
+  - Possui funções e constantes pré-definidos
+
+  - Backslash e aspas simples/dupla {
+
+    var exemplo = 'It's time' // Irá apontar um erro pois a função das aspas simples nesse contexto é
+    de fechar o bloco da string
+
+    var exemplo = "It's time" // Assim irá funcionar
+    var exemplo = 'It\'s time' // Assim também pois estamos utilizando o Backslash para dizer que agora
+    a aspas simples não irá fazer a função especial dela, apenas irá ser exibida, sem dar erro. O Backslash
+    funciona para todos caracteres especiais.
+
+  }
+
+  - Template String {
+
+    // Utilizado para chamar váriaveis dentro de uma string. O mesmo considera espaços e quebras de linhas 
+    setados dentro do template. Tudo que estiver dentro de ${} o JS irá realizar uma intepolarização, 
+    que seria tentar transformar esse valor em algo ou puxar informações salvas nessa váriavel. 
+    exemplo: console.log(`1 + 1 = ${1 + 1}`)
+
+    const template = 
+    `
+    Olá ${variavelDesejada},
+    Tudo bem?
+    `
+  }
+
+  - "Escapando" caracteres especiais em uma string
+      var frase = "Esse é o "melhor" jogo" -> Não irá funcionar
+      var frase = "Esse é o \"melhor"\ jogo" -> Irá funcionar, ao utilizarmos a '\' estamos dizendo ao js que apenas utilize o elemento
+      e não considere sua função real.
+
+  Quando somamos números com strings temos uma concatenação e o tipo final será uma string
+
+    var ano = '2018';
+    var mes = 8;
+
+    console.log(ano + mes)
+
+    Resultado:
+      20188 
+
+
+}
+
+ - AJAX {
+
+   // Utilizado para realizar requisições assincronas ao BeckEnd (Realiza atualizações sem atualizar a paǵina)
+
+   var xhr = new XMLHttpRequest();                        // Criando uma nova requisição AJAX
+
+  xhr.open('GET', 'https://api.github.com/users/jbr13')   // Metodo de requisição e url que iremos 
+                                                          realizar a request
+  xhr.send(null);                                         // Necessário passar um parametro
+
+  xhr.onreadystatechange = function() {                   // Função que irá "monitorar" quando a requisição
+                                                          for retornada.
+  if(xhr.readyState === 4) {                              // Se o código da mudança de status da requisição for igual a 4
+                                                          que é o código que informa que a requisição foi retornada
+
+      console.log(JSON.parse(xhr.responseText));           // Iremos mostrar as informações retornadas
+                                                           convertendo o JSON em um OBJETO | ARRAY
+
+    }
+
+  }
+    
+}
+
+-- "Estranhezas" e definições JS {
+
+    - null
+      Quando declaramos uma variavel como null e printamos o tipo dela, o js irá retornar que a mesma é um objeto.
+
+    - Hoisting
+      Quando declaramos uma vahttps://www.origamid.com/slide/javascript-completo-es6/#/0101-javascript-completo-es6/1
+      Quando a varíavel não possui valor aribuido
+
+    - No JS, é possível atribuir uma váriavel em um bloco, e nesse mesmo bloco
+    atribui-lá novamente: {
+
+      var a = 5
+
+      a = 6
+
+    }
+
+  - Tipagem dinâmica {
+
+    // Permite maior flexibilidade na codificação, um exEmplo seria declarando uma variavel como var e
+    podendo atibuir a mesma uma string ou inteiro e etc...
+
+  }
+
+  - Números {
+
+    Quando colocamos um '+' ou '-' na frente de uma variavel que contenha uma string, tentamos
+    converter a mesma para número, caso o js retornar o erro NaN (Not a Number) quer dizer que 
+    a string não pode ser convertida para número.
+
+    var frase = "8"
+    +frase;
+
+    ||
+
+    var frase = +"8"
+    console.log(frase)
+
+    Resultado
+      8 (Tipo númerico)
+
+    - Inteiros {
+
+    // Se um inteiro é declarado utilizado casa decimal {
+    
+    var inteiro = 2.0
+    
+    // Ainda será do tipo inteiro, mesmo se passsado dessa forma
+
+    }
+
+    // Números divídidos por 0 irão originar um número infinito
+
+    // Numeros em forma de string serão interpretados pelo js como númericos {
+
+    "10" / 2 = 5 
+
+    }
+
+    // Numeros em forma de string, se utilizado o operador de concatenação '+', irá
+    ser concatenado ao invés de somado pois a string possuir maior relevacia nesse contexto
+
+    '3' + 2 = "32"
+
+    - Exponencial
+
+      Para declaramos um número com exponencial, podemos utilizar da seguinte convenção
+
+        var exp = 2e10;
+        onde o 'e' significa esponente, o que tiver a sua direita será o total de zeros que virá no número
+
+  }
+
+  - Geral {
+  
+    // Definir valor padrão se algo não for Encontrando
+    JOSN.parse(localStorage.getItem('list_todos')) || [];     // Aqui o JS irá tentar pegar o list_todos
+                                                              se ele não existir ou não for Encontrando
+                                                              iremos atribuir um array vázio a ele.
+
+    // Chamar um arquivo JS externo no HTML
+    <script src="todoFunc.js"></script>
+
+    // Para percorrer um Array, existe um for especifico para o mesmo
+    for (<variavelQueArmazenaráCadaItemDoArray> of <arrayExitente) {
+
+        ...
+
+    }
+
+    // No JS podemos declarar nossas váriaveis com a palavra reservada "var"
+      - Utilizando "var" para declarar variaveis, a mesma só estara disponivel naquele 
+      escopo em questão.
+
+    // Sempre dentro de uma condição '()' o retorno será true or false
+
+    -- Condicionais {
+
+      - if {
+
+        Sempre que verificamos algo dentro de um if o js irá tentar nos retornar um true or false
+
+        false = false
+        0 = false
+        NaN = false
+        null = false
+        Undefined = false
+        '' = false
+
+        Para verificarmos se uma variavels é verdadeira colocamos o "!!" na frente dela,
+        assim iremos mostrar se ela é true or fale
+
+          var teste = "abobora"
+          console.log(!!teste)
+
+          Resultado: 
+            true
+      }
+
+      - switch    // Utilizado para cenários de multiplos possíveis casos {
+
+        Com o switch você pode verificar se uma variável é igual à diferentes valores utilizando o case. Caso ela seja igual, você pode fazer alguma coisa e utilizar a palavra chave break; para cancelar a continuação. O valor de default ocorrerá caso nenhuma das anteriores seja verdadeira.
+
+        var corFavorita = 'Azul';
+
+        switch (corFavorita) {
+          case 'Azul':
+            console.log('Olhe para o céu.');
+            break;
+          case 'Vermelho':
+            console.log('Olhe para rosas.');
+            break;
+          case 'Amarelo':
+            console.log('Olhe para o sol.');
+            break;
+          default:
+            console.log('Feche os olhos');
+        }
+      
+      - Ternários {
+
+        // Utilizado visando 'enxugar' o código, torna condicionais antes em várias
+       linhas em uma única... (Ao meu ver torna o código mais dificil de ser lido) 
+
+        // Onde seria: 
+        if (sexo === 'M') {
+          return 'Masculino'
+        } else {
+          return 'Femininno'
+        }
+
+        // Ficará:
+        var retorno = (sexo === 'M') ? 'Masculino' : 'Feminino'
+
+        // Onde o '?' é oq verifica a resposta da condição e se for true, irá pegar o 
+        que esta a esquerda do ':' se não, o que esta a direita. 
+
+        }
+      
+      - Laços de repetições {
+
+        // Quando usar o for e quando usar o while? 
+
+        Quando sabemos o número de repetições
+        > for
+
+        Quando não sabemos o número de repetições que irá ser executado
+        > while
+
+      }
+
+
+
+    }
+
+    - Funções {
+
+      // Quando se deseja apenas referenciar uma função
+      setInterval
+
+      // Para executar a função
+      setInterval()
+
+    }
+
+  - Manipulando a DOM {
+
+    DOM é a arvore de elementos dentro de nosso HTML, é responsável por todos elementos apresentados em tela
+
+    // Para referenciar a DOM, há uma variável global:
+    > document
+
+    // exemplo de manipulação através do HTML: {
+
+    <body>
+
+      <div id = 'app'>
+        <input onkeypress="mostraAlerta()">Clique aqui</input>
+      </div>
+
+    <script>
+
+      function mostraAlerta() {
+        alert('Botão clicado');
+      }
+
+    </script>
+
+    </body>
+    }
+
+    Exemplo de manipulação através do JS: 
+      
+    var btnElement = document.querySelector('button.botao');
+
+    btnElement.onclick = function() {
+      alert('Botão clicado');
+      }
+
+    // Pegar um elemento pelo id (No html há um id para esse elemento)
+    getElementById('nome');
+
+    // Pegar todos elementos de tag 'x' (Esse método sempre irá retornar um array)
+    getElementsByTagName('x');
+      - Caso desejar definir qual tag será atingido por essa condição (Já que ele irá
+      aplicar para todos com o mesmo nome) definir um 'indíce' da tag, exemplo:
+      getElementsByTagName('x')[0];
+
+    // Pegar todos elementos pelo nome da classe
+    getElementsByClassName
+      - Caso desejar definir qual classe será atingida por essa condição (Já que ele irá
+      aplicar para todos com o mesmo nome) definir um 'indíce' da classe, exemplo:
+      getElementsByClassName('x')[0];
+
+    // Percorre a DOM, até encontrar um determinado elemento
+    querySelector('div#app input');       // O que esta dentro da string, será proucurado no DOM
+      - Nessa consulta é possível utilizar também uma string que referencia os atributos dos elementos
+      exemplo: querySelector('input[name=nome]');
+      OBS: Esse metódo procurar apenas por 1 elemento, para que pegue todos elementos, utilizar:
+        querySelectorAll()
+
+    // Capturar o click do usuário
+    nomeBotaoDesejado.onclick
+
+    // Receber valores de um elemento
+    inputDesejado.value
+
+    // Criando um "Filho" ao elemento (Quando criamos um 'filho' ao elemento,
+    estamos jogando algo dentro dele)
+    elementoDesejeado.appendChild(elementoDesejeadoQueSeraJogado);
+
+    // Podemos também remover um "Filho", por exemplo, tirar um input de uma determinada DIV
+    de nosso DOM. Por exemplo, em uma situação que deejarmos remover um input de um DIV através do JS,
+    fariamos assim:
+    containerRecebendoADiv.removeChild(inputDesejado);
+
+    // Podemos também, criar elementos com o JS, por exemplo, se tivessemos a necessidade de criar um link
+    para o usuário acessa utilizando apenas JS:
+
+    <div id = 'app'>
+      <div class="box"></div>
+    </div>
+
+    var linkElement = document.createElement('a');                // Criando elemento 'a' link
+
+    linkElement.setAttribute('href', 'https://google.com.br');      // Setando os atributos do link
+
+    var textElement = document.createTextNode('Acessar site da google');      // Alterando o texto do link
+    linkElement.appendChild(textElement);           // Atribuindo ao link criado anteriormente nosso novo texto 
+
+    var containerElement = document.querySelector('#app');    // Encontrando a div app e atribuindo a uma variavel
+    containerElement.appendChild(linkElement);                // Definindo que o link element será um elemento 
+                                                              'Filho' do containerElement onde nossa div encontra-se
+
+    -- Estilizando css da DOM com JS {
+
+        // JS nos permite manipular estilos de elementos
+
+        // Exemplo, se temos a seguint div
+
+        <div id = 'app'>
+            <div class="box"></div>
+        </div>
+
+        // Podemos estiliza a mesma utilizando o JS para manipular
+        elemntos css
+
+        var boxElement = querySelector('div.box');      // Recebdno a div desejada
+
+        boxElement.style.width = 100;             // Setando largura p/ ela (Caso desejarmos
+                                                  utilizar, por exemplo, um background-color
+                                                  podemos setar utilizando a convenssão camelCase
+                                                  que iria ficar:  
+                                                  boxElement.style.backgoundColor = '#f00';)
+
+    }
+
+  }
+
+}
+
+-- ECMAScript 6 {
+
+    Formula as novas funcionalidades da linguagem
+
+    // Babel
+      Pega o código escrito com funcionalidades novas (Nem todos navegadores tem suporte para tal) e transforma / reescreve para 
+      uma maneira que o mesmo entendia antes das novas versões. (Navegadores demoram para atualizar funcionalidades (Enquanto JS 
+      esta no ES6, os navegadores, as vezes, estão no ES5, por exemplo...))
+    // 
+
+}
+
+-- intervalo e timeout {
+
+  // Setar intervalos para algo
+  setInterval(<chamaAlgo>, 1000)
+  
+  // Setar intervalo de tempo onde será realizado algo
+  setTimeout(exibeAlgo, 1000);
+
+  }
+
+-- Operadores {
+
+    =     // Atribuição
+    ==    // Comparação
+    ===   // Compara o valor e o tipo das variáveis
+
+  }
+
+  operadores artméticos {
+
+    %         // Resto da divisão/modulo
+    +=        // Mesma coisa que x = x + 3
+    **        // Expoente
+
+  }
+
+  lógicos {
+
+    && = e
+    || = ou
+
+  }
+
+}
+
+-- Metodos {
+
+  console.log(typeof variavelDesejada)
+    Assim iremos printar no console o tipo da variavel desejada
+
+  Arrays
+    pop();  // Retorna o ultimo elemento do array, removendo o mesmo da lista
+    push();  // Adiciona elemento ao array
+
+  Strings 
+
+    " console.log(stringUtilizada.charAt(4))   
+    Pegar dentro de um string o elemento que esta no indice 4
+  
+    charAt()
+    Pegar o elemento em um indíce
+    
+    charCodeAt()
+    Verificar qual é o valor do elemento na tabela ask | unicode
+    
+    indexOf()
+    Descobrir o indíce de elemento
+    
+    substring(0, 3)
+    Pegar uma parte da string
+    
+    concat()
+    Concatenar (Pode ser utilizado o '+' para concatenar strings)
+    
+    replace(3, 'e')
+    Substituir elementos por outros
+    
+    split(',')
+    Converter ,com base em um separador, em um array
+    
+    nomeArray.push(<elementoDesejado>);
+    Adicionar um item a um array, na ultima posição
+    
+    arrayDesejado.splice(indice, 1);     1 é a quantidade de itens que irá remover
+    Remover com base no indice elementos do array
+    
+    var posicao = arrayDesejado.indexOf(textoASerProucurado);
+    Procurar com base em um texto, indíce do mesmo em um array
+    
+    toUpperCase()
+    Transformar letras em maisculas"
+      
+    
+
+}
+
+-- Local storage {
+
+  // Irá salvar elementos mesmo após atualização da página ou abrir e fechar aplicação
+
+  // Exemplo de função para salvar no storage
+
+  function saveToStorage () { localStorage.setItem('list_todos', JSON.stringify(todos)); 
+
+  // Onde o setItem é o que irá armazenar, o "list_todos" é a chave e o "todos" é o valor (Um array declarado anteriormente)
+  //JSON, é uma string, e nesse contexto estamos convertendo nosso vetor em uma string com o stringify
+
+  // Para verificar se foi salvo os elementos
+  Chrome > F12 (Console dev) > Application > Local Storage > fileDesejada (Irá conter as chaves e valores armazenados)
+
+  OBS: Se defirnirmos essa função de save, teremos que chama-la em nossas outras funções que desejamos gravar algo 
+
+  // Para transformar dnv em um array com o JSON
+  JSON.parse(localStorage.getItem());     // getItem é uma função do localStorage para pegar os itens do mesmo
+  
+}
+
+ - AXIOS {
+
+   // Bilbioteca JS para requisição assincronas, como as requisições AJAX que são feitas em XMLHttpRequest, porém 
+   ele é um facilitador que trata de algumas coisas por baixo dos panos, essas requisições serão feitas através do axios
+   // https://github.com/axios/axios
+
+   // Para utilizar, setar no HTML
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+   // Após isso será setado apenas: 
+
+   axios.get('https://api.github.com/users/jbr13')        // Onde o get é o motodo de request, poderia ser POST, UPDATE
+    .then(function(response) {                            // em seguida a url da requisição
+        console.log(response);
+    })
+    .catch(function(error) {
+        console.warn(error);
+    });
+
+    OBS: AXIOS é uma promisse que trabalha com o XMLHttpRequest trazendo mais informações pois reazliza
+    um "encapsulamento" do XMLHttpRequest, além de facilitar algumas caracteristicas, como por exemplo,
+    na promisse anterior tivemos de tratar a resposta da reuiqisção transformando de JSON para array | objeto e vice-versa,
+    ja com o axios o mesmo faŕa isso automáticamente.
+ 
+
+ }
+
+ - Promisses {
+
+   // Códigos que não influenciam na linha do tempo de JS
+   // Funções que irão devolver valores do resultado, sendo erro ou secesso,
+   apenas depois de um tempo, sem atrapalhar execução do JS
+
+   // Criar função que retornará uma promisse
+   var minhaPromisse = function () {
+
+    // Retorno da função como uma promisse
+    return new Promise(function(resolve, reject) {    // resolve: função para casos de sucesso
+                                                      reject: função para casos de error
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'https://api.github.com/users/jbr13');                                       
+        xhr.send(null);              
+
+        xhr.onreadystatechange = function() {       
+         
+            if(xhr.readyState === 4) {
+
+                if (xhr.status === 200) {           // Se a resposta da requisição, for 200 (SUCESS)
+
+                    resolve(JSON.parse(xhr.responseText));    // Iremos chamar o resolve, passando o resultado 
+                                                              de nossa requisição em forma de OBJETO | ARRAY
+
+                } else {
+
+                    reject('Erro na requisição');       // Chamando o reject e definindo uma msg de error
+
+                }
+
+            }
+       
+        }
+    });
+
+}
+
+minhaPromisse()             // Chamando a função
+    .then(function(response) {      // Se for com sucesso (.then), passando a response (resposta do servido)
+        console.log(response);      // Printar resposta
+    })
+    .catch(function(error) {          // Se for com error, mostrar msg de erro.
+        console.warn(error);
+    });
+    
+ }
+
+-- ETC {
+
+  - Documentação de auxílio: https://www.origamid.com/slide/javascript-completo-es6/#/0101-javascript-completo-es6/1
+
+  - Origamid {
+
+    Software: Brackets
+
+  }
+
+  - NODE {
+
+  // Executar códigos js através do terminal utilizando o node {
+    
+  $ node <nomeArquivo.js> 
+
+  }
+
+  - VSCODE {
+
+    // Extensão para compilar cód no VSCODE
+
+    > Extensões > Code Runner > Install
+
+    // Rodar codigo JS pela extensão instalada
+
+    > [CTRL + ALT + N]
+
+  }
+
+  - JS {
+
+    -- Comentários {
+      
+    }
+
+      // Única linha
+      /* Múltiplas linhas */
+      /* 
+       *  Comentário
+       *  de múltiplas linhas
+       *  identado pela IDE
+       */
+
+    }
+
+  }
+
+}

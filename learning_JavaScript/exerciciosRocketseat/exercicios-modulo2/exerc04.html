@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 4</title>
+
+</head>
+
+<body>
+
+    <ul id = "lista">
+        
+    </ul> 
+
+    <input type="text" name="nome">
+    <button onClick="adicionar()">Adicionar</button>
+
+    <script>
+    
+    document.body.style.backgroundColor = 'green';
+ 
+    var nomes = ["Diego", "Gabriel", "Lucas"];
+
+    var divUL = document.getElementById('lista');
+
+    var createLI1 = document.createElement('li');
+    var createLI2 = document.createElement('li');
+    var createLI3 = document.createElement('li');
+    
+    createLI1.innerHTML = "Nome: " + nomes[0];
+    createLI2.innerHTML = "Nome: " + nomes[1];
+    createLI3.innerHTML = "Nome: " + nomes[2];
+
+    divUL.appendChild(createLI1);
+    divUL.appendChild(createLI2);
+    divUL.appendChild(createLI3);
+
+    function adicionar() {
+
+        var createLiFunc = document.createElement('li');
+        var novoNome = document.querySelector('input[name=nome]');
+
+        createLiFunc.innerHTML = "Nome: " + novoNome.value;
+        divUL.appendChild(createLiFunc);
+
+        function limparImput() {
+
+            if(novoNome.value != "" || novoNome.value != null) {
+                
+                novoNome.value = ''
+            
+            }
+
+        }
+
+        return limparImput()
+        
+    }
+
+    </script>
+
+</body>

@@ -1,0 +1,32 @@
+------------------------------------------------------------------------------------------------------
+                                    Bootstrap 4
+------------------------------------------------------------------------------------------------------
+
+Documentação: https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+- FrameWorkCSS
+  Trata-se de classes css pré definidas que irão facilitar a programação de nosso site, tornando-o responsivo e agilizando o processo.
+
+  Para o mesmo funcionar, temos que fazer o download dos arquivos Bootstrap e iremos utilizar os arquivos que desejamos, nesse caso o bootstrap.css e o bootstrap.js. Também podemos utilizar o link fornecedio pelos mesmos na documentação.
+
+- Grid Bootstrap
+
+  Temos 12 colunas no grid do bootstrap, seguindo a documentação podemos ver que teremos uma hieraqrquia de estrutura + ou - como o seguinte:
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm"> ...
+
+  onde podemos alterar os valores de col para atender nossa necessidade, sm significa small, e o item só irá ficar em coluna acima de determinado de tamanho de tela, se não, tera um outro comportamento.
+
+  Podemos definir também + de 1 classe pra cada elemento, seguindo esse raciocionio, caso desejasse que acima do valor pré definido do col-sm tivessemos outro comportamento para o elemento poderiamos declarar da seguinte forma:
+
+    <div class="container">
+    <div class="row">
+      <div class="col-sm col-12"> ...
+
+  Ou seja, acima de 576px (col-sm) o elemento irá ocupar as 12 colunas de nosso grid.
+
+  Uma observação, quando tentamos utilizar grids dentro de grids, temos que criar sempre uma classe row, se não iremos ter promas de espaçamento.
+
+  Outro possível cenário, seria colocarmos um espaçamento em um elemento utilizando a propriedade fornecida pelo bootstrap ml-1, que no caso seria margin left e o valor 1, poderia ser tb, mr-1 (margin right), mx-1(espaçamento no eixo x) e assim por diante, nesse caso podemos ir além, caso desejarmos algum propriedade quando o valor for acima de determinado tamanho, podemos definir mr-md-1 ou seja, margin-right quadno for acima de 720px(md). Ver sempre documentação e ter em mente que pdoemos combar as classes.

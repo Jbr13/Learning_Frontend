@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 3</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <ul id="divUl">
+
+    </ul>
+
+    <input type="text" name="user">
+    <button onclick="ProcuraUsuario()">Pesquisar</button>
+
+    <script>
+
+    function ProcuraUsuario() { 
+
+        var usuario = document.querySelector('input[name=user]');
+
+        var promisseInstance = function() {
+            
+            return new Promise(function(resolve, reject) {
+
+                var xhr = new XMLHttpRequest();   
+
+                xhr.open('GET', 'https://api.github.com/users/'+usuario.value+'/repos');
+                xhr.send(null);
+
+                xhr.onreadystatechange = function() {
+
+                    if (xhr.readyState === 4) {
+
+                        var createLi = document.createElement('li');
+                        divUl.appendChild(createLi);
+                        createLi.innerHTML = "Loading..";
+
+                        if (xhr.status === 200) {
+
+                            setTimeout(() => {
+                                divUl.removeChild(createLi);
+                                resolve(JSON.parse(xhr.responseText));    
+                            }, 3000);
+                                                                              
+                        } else if(xhr.status === 404) {
+                            setTimeout(() => {
+                                divUl.removeChild(createLi);
+                                alert("[ERROR] - Usuário de nome [" + usuario.value + "] não encontrado");
+                            }, 3000);
+                        } else {
+
+                            reject("Erro na request");
+
+                        }
+                    }
+
+                }
+
+
+            });
+        }
+
+        promisseInstance()
+            .then(function(response) {
+
+                var divUl = document.querySelector('ul#divUl');
+
+                for (count = 0; count < response.length; count++) {
+
+                    var createLi = document.createElement('li');
+                    createLi.innerHTML = response[count]['name'];
+                    divUl.appendChild(createLi);
+                    
+                }    
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    
+
+    </script>
+
+</body>

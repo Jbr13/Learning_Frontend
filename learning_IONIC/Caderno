@@ -1,0 +1,66 @@
+------------------------------------------------------------------------------------------------------
+                                              IONIC
+------------------------------------------------------------------------------------------------------
+
+- Doc: https://ionicframework.com/docs/
+
+- Oque é:
+  Framework de UI para apps mobile/web/desktop criado usando tecnologias web(HTML, CSS e JavaScript)
+  Atualmente é integrado a projetos com Angular e React. Vue ainda esta em construção.
+
+  Metas: 
+    Ser multiplataforma (Android/IOS/PWA/DESKTOP)
+    Construido usando HTML, CSS e JS
+    Usar APIS web modernas como Elements e shadow DOM
+  
+  Premissas:
+    Layout simples/moderno/clean
+  
+
+- Preparação do ambiente de desenvolvimento web
+
+  Precisamos de:
+    > Um terminal
+    > Node & NPM
+    > Ionic CLI
+    > IDE de desenvolvimento, nosso caso vscode
+      - Extensão vs code para utilizar o Angular junto ao IONIC: Angular Extension Pack(Loiane Groner)
+
+- Estrutura do projeto
+  e2e: Onde roda protractor, um framework para teste automatico de tela
+  node_modules: Dependencias da aplicação
+  src: Código fonte do projeto
+   > assets: Imgs, icons
+   > enviromments: configs de produ e dev
+   > theme: cores da aplicacão
+   > global.scss: Importa coisas IONIC + Angular
+   > index.html: Arquivo inicial do projeto
+   > main.ts: Onde inicia de fato a aplicação
+   > polyfills.ts: Para encapsular coisas do js
+  angular.json: Configs do projeto Angular
+  karma.conf.js: Para executar testes unitários
+  package.json: Onde ficam as dependencias da aplicação 
+
+- Criando novas funcionalidades
+  Directive: Serve para colocar comportamento em um elemento HTML (Pode ser usada como uma validação de CPF por exemplo)
+    ionic g directive ./pastaOndeDesejaCriar/nomeDiretiva
+  Class: Classe
+    ionic g class nomeDaClasse
+  Page: Página html
+    ionic g page contatos/listaContatos
+  Component: Mesma coisa que página, porém pode ser fracionado, uma página pode conter varios componentes
+    ionic g component contatos/listaTodosContatos
+  Service: 'Armazena' regras de negócios
+    ionic g serve contatos/nomeService
+  Module: Agrupamento de contexto, exemplo: Contexto de contatos, form de contato, listagem de contato e etc... podem ser agrupados nesse modulo
+    ionic g module contatos/nomeModulo
+  Guard: Serve para bloquear uma rota, exemplo: verificar se o usuario pode ou não acessar determinada rota
+    ionic g guard authentication (> canActivate)
+
+- Arquitetura:
+  Node: Rodar JS no Desktop
+  npm: Gerenciador de pacotes (Comandos do Ionic rodam em cima dos comandos do Angular, então precisamos de um dependecia do ionic/angular)
+  ionic: Parte UI da aplicação
+  Angular: 
+  React:
+

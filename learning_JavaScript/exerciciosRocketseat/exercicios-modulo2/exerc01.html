@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 1</title>
+
+</head>
+
+<body>
+
+    <button class="botao">Clique aqui</button>
+
+    <script>
+    
+    var elementButton = document.querySelector('.botao');
+
+    elementButton.onclick = function createBG() {
+
+        var elementBG = document.createElement('div');
+
+        elementBG.className = 'divBox';
+        elementBG.style.width = '100%';
+        elementBG.style.height = '100px';
+        elementBG.style.backgroundColor = 'black';
+
+        document.querySelector('body').appendChild(elementBG);
+
+    }
+
+    </script>
+
+</body>

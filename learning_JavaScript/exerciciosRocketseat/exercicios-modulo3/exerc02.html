@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>Exercicio 2</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <ul id="divUl">
+
+    </ul>
+
+    <input type="text" name="user">
+    <button onclick="ProcuraUsuario()">Pesquisar</button>
+
+    <script>
+
+    function ProcuraUsuario() { 
+    
+    var usuario = document.querySelector('input[name=user]');
+
+        axios.get('https://api.github.com/users/'+ usuario.value +'/repos')       
+        
+        .then(function(response) {                        
+
+        for (count = 0; count < response.data.length ; count++) {
+
+            var divUl = document.getElementById('divUl');
+            var createLi = document.createElement('li');
+
+            divUl.appendChild(createLi);
+
+            createLi.innerHTML = response['data'][count]['name'];
+
+        }
+
+        })
+        .catch(function(error) {
+            console.warn(error);
+        });
+    }
+    </script>
+
+</body>
