@@ -30,3 +30,7 @@ Documentação: https://getbootstrap.com/docs/4.0/getting-started/introduction/
   Uma observação, quando tentamos utilizar grids dentro de grids, temos que criar sempre uma classe row, se não iremos ter promas de espaçamento.
 
   Outro possível cenário, seria colocarmos um espaçamento em um elemento utilizando a propriedade fornecida pelo bootstrap ml-1, que no caso seria margin left e o valor 1, poderia ser tb, mr-1 (margin right), mx-1(espaçamento no eixo x) e assim por diante, nesse caso podemos ir além, caso desejarmos algum propriedade quando o valor for acima de determinado tamanho, podemos definir mr-md-1 ou seja, margin-right quadno for acima de 720px(md). Ver sempre documentação e ter em mente que pdoemos combar as classes.
+
+-- Otimizando o js
+  
+  Para otimizarmos nosso bootstrap, podemos usar os arquivos comprimidos que o próprio framework disponibiliza, para isso olhar os arquivos com nome nomeArquivo.min.extensão.
