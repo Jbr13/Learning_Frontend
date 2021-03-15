@@ -34,3 +34,6 @@ Documentação: https://getbootstrap.com/docs/4.0/getting-started/introduction/
 -- Otimizando o js
   
   Para otimizarmos nosso bootstrap, podemos usar os arquivos comprimidos que o próprio framework disponibiliza, para isso olhar os arquivos com nome nomeArquivo.min.extensão.
+
+-- Cuidado quando for usar o bootstrap
+  O framework é recomendado para utilização em equipes, projetos maiores, isso pois o mesmo demanda mais capacidade de amrazenamento e processamento do que um site feito na mão.
